@@ -47,7 +47,7 @@ function urlAdd(id) {
 function listFromApi() {
   fetch(url).then(j => j.json()).then(d => d.forEach(each => listItem(each.message)))
 }
-function patchOrDelete(op) {
+function patchOrDelete(op = "PATCH") {
   fetch(url).then(j => j.json()).then(d => d.forEach(each => postMessage("hello",urlAdd(each.id), op)))
 }
 
