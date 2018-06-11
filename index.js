@@ -44,9 +44,12 @@ fetch(request);
 function urlAdd(id) {
   return url + "/" +id
 }
+function listFromApi() {
+  fetch(url).then(j => j.json()).then(d => d.forEach(each => listItem(each.message)))
+}
+function patchOrDelete(op) {
+  fetch(url).then(j => j.json()).then(d => d.forEach(each => postMessage("hello",urlAdd(each.id), op)))
+}
 
 str.forEach(each => listItem(each));
 getText();
-
-// fetch(url).then(j => j.json()).then(d => d.forEach(each => listItem(each.message)))
-// fetch(url).then(j => j.json()).then(d => d.forEach(each => postMessage("hello",urlAdd(each.id), "DELETE")))
